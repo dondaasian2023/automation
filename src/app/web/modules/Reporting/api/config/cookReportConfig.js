@@ -1,0 +1,20 @@
+export const cookReportConfig = ({
+    layout,
+    widgets,
+    userGroups,
+    mobileWidgets,
+    name,
+    pageId,
+    isDeleted = false,
+}) => ({
+    layout,
+    widgets,
+    userGroups,
+    mobileWidgets,
+    name,
+    pageId,
+    isDeleted,
+    isWeb: true,
+    seqNumber: 1,
+    isMobile: true,
+});

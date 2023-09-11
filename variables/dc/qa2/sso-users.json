@@ -1,0 +1,10 @@
+{
+    "ADFS": {
+        "EMAIL": "adfs.test02@adfsdemo.local",
+        "PASSWORD": "DealCloud12345!"
+    },
+    "OKTA": {
+        "EMAIL": "valeria.zenko@gmail.com",
+        "PASSWORD": "1!Qwerty"
+    }
+}

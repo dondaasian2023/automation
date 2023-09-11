@@ -1,0 +1,14 @@
+{
+    "ADFS": {
+        "EMAIL": "adfs.test01@adfsdemo.local",
+        "PASSWORD": "ImWhc9fdxlj89w4"
+    },
+    "OKTA": {
+        "EMAIL": "valeria.zenko@gmail.com",
+        "PASSWORD": "1!Qwerty"
+    },
+    "AZURE": {
+        "EMAIL": "qamcsso@dealcloud.onmicrosoft.com",
+        "PASSWORD": "8M!Nv<f4]kru"
+    }
+}

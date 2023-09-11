@@ -1,0 +1,12 @@
+{
+    "OKTA": {
+        "DOMAIN": "ordersso.oneplaceqa.intapp.com",
+        "EMAIL": "anzhalika.rudaya@intapp.com",
+        "PASSWORD": "okta052021"
+    },
+    "AZURE": {
+        "DOMAIN": "adfssso.oneplaceqa.intapp.com",
+        "EMAIL": "arudaya@dealclloud.onmicrosoft.com",
+        "PASSWORD": "Wtest100*123459"
+    }
+}

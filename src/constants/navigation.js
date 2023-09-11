@@ -1,0 +1,15 @@
+export const PAGE_NAMES = {
+    MAIN: 'Main',
+    MEETINGS: 'Meetings',
+    DASHBOARDS: 'Dashboards',
+    NUDGES: 'Nudges',
+    NUDGE_DASHBOARD: 'NudgeDashboard',
+    MORE: 'More',
+    SETTINGS: 'Settings',
+    FAVORITES: 'Favorites',
+    LISTS: 'Lists',
+    VIEWS: 'Views',
+    TEMPLATE_REPORTS: 'Template Reports',
+    OBJECTS: 'Objects',
+    DRAFTS_OFFLINE_ENTRIES: 'Drafts & Offline Entries',
+};
