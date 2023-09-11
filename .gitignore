@@ -1,0 +1,41 @@
+# IDEs and editors
+.idea/
+.vscode/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional eslint cache
+.eslintcache
+
+# Reports folder
+junit-results
+allure-results
+allure-report
+screenshots
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Sensitive data
+secret
+
+# App files
+app/*.app
+app/*.apk
+
+.env

@@ -1,0 +1,104 @@
+def APP_FOLDER = 'app'
+def TESTS_FOLDER = 'unit-tests'
+def TESTS_BRANCH = 'develop'
+def GITLAB_CREDENTIALS_ID = 'gitlab-ssh-keypair-jenkins-open'
+def TESTS_REPO_URL = 'git@gitlab.intapp.com:intappx/platform-mobile-ui-tests.git'
+
+pipeline {
+    agent {
+        label 'macos && node && uitests'
+    }
+    environment {
+        TESTS_BRANCH = "${TESTS_BRANCH}"
+    }
+    options {
+        skipDefaultCheckout(true)
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                myShell "mkdir -p ${TESTS_FOLDER}"
+                dir("${TESTS_FOLDER}") {
+                    git(
+                        branch: "${TESTS_BRANCH}",
+                        credentialsId: "${GITLAB_CREDENTIALS_ID}",
+                        url: "${TESTS_REPO_URL}"
+                    )
+                }
+            }
+        }
+
+        stage('Dependencies') {
+            steps {
+                dir("${TESTS_FOLDER}") {
+                    myShell "npm ci"
+                }
+            }
+        }
+
+        stage('Tests') {
+            environment {
+                LOG_LEVEL = 'error'
+                LOG_FILENAME = 'logs/test-logs.log'
+            }
+            steps {
+                script {
+                    dir("${TESTS_FOLDER}") {
+                        myShell "npm run clean"
+                        RUN_STATUS = 0
+
+                         RUN_STATUS = RUN_STATUS | sh(returnStatus: true, script:"""
+                             set +ex
+                             source ~/.zshrc
+                             set -ex
+
+                             npm run test
+                         """)
+
+                        if (RUN_STATUS != 0) {
+                            currentBuild.result = 'FAILURE'
+                        } else {
+                            currentBuild.result = 'SUCCESS'
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Reports') {
+            steps {
+                dir("${TESTS_FOLDER}") {
+                    myShell('npm run generate-report')
+                }
+
+                allure([
+                    jdk: '',
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: "${TESTS_FOLDER}/allure-results/"]]
+                ])
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Test result: FAILURE'
+        }
+        success {
+            echo 'Test result: SUCCESS'
+        }
+    }
+}
+
+// preloads profile into shell
+def myShell(String script) {
+    sh"""
+        set +ex
+        source ~/.zshrc
+        set -ex
+
+        ${script}
+    """
+}

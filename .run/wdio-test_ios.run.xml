@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="wdio-test:ios" type="NodeJSConfigurationType" application-parameters="$ContentRoot$/config/capabilities/ios/ios.conf.js --spec $FileRelativePath$" path-to-js-file="node_modules/@wdio/cli/bin/wdio.js" working-dir="$PROJECT_DIR$">
+    <envs>
+      <env name="NODE_OPTIONS" value="--stack-trace-limit=30" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

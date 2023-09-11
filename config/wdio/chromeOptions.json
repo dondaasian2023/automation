@@ -1,0 +1,18 @@
+{
+  "args": [
+    "--no-sandbox",
+    "--disable-fre",
+    "--no-first-run",
+    "disable-infobars",
+    "--disable-dev-shm-usage",
+    "--disable-web-security",
+    "--disable-site-isolation-trials",
+    "--allow-running-insecure-content",
+    "--disable-popup-blocking",
+    "--allow-insecure-localhost",
+    "--silent",
+    "--incognito",
+    "--disable-cache",
+    "ignore-certificate-errors"
+  ]
+}
